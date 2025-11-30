@@ -1,129 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-  <title>Update Required</title>
-  
-    <!-- Bootstrap CSS (via CDN) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Bootstrap Icons CSS (via CDN) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>App Update Required</title>
+    <!-- Bootstrap CSS (via CDN) --><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Icons CSS (via CDN) --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <style>
-        /* CSS Root for attractive light colors */
+        /* CSS Root for attractive light colors, using #65a4ff as the main theme color */
         :root {
-            --bs-app-bg: #f5f9ff; /* Very light, soft blue background */
-            --bs-primary-light: #52a3f5; /* Light primary color for focus/buttons */
-            --bs-primary-dark: #1e87f0; /* Darker primary for button text/hover */
-            --bs-text-color: #343a40;
-            --max-width: 660px;
+            --bs-primary-color: #65a4ff; /* Main app blue (User's preferred color) */
+            --bs-primary-light-bg: #f0f7ff; /* Very light background for icon wrapper */
+            --bs-primary-dark: #4d82c4; /* Darker hover state for button */
+            --bs-body-bg: #ffffff;    /* Overall body background: White (#fff) as requested */
+
+            --bs-shape-deep: rgba(40, 90, 150, 0.4); /* Deep, transparent blue for shapes */
+
+            --bs-text-primary: #333;
+            --bs-text-secondary: #666;
+            --max-width: 380px;
         }
 
         body {
-            background-color: var(--bs-app-bg);
-            color: var(--bs-text-color);
+            background-color: var(--bs-body-bg); /* Full page white */
+            font-family: 'Poppins', sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem; /* Padding for mobile safety */
-            font-family: 'Inter', sans-serif;
+            padding: 1rem;
+            color: var(--bs-text-primary);
+            overflow: hidden;
+            position: relative;
         }
 
-        .update-container {
+        
+
+        @keyframes floatAndFade {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            50% { transform: translate(0, 20px) scale(1.1); opacity: 0.8; }
+            100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+        }
+
+        .status-container {
             max-width: var(--max-width);
             width: 100%;
-            /* Box-shadow removed as requested. Using a light border instead for definition. */
-            border: 1px solid #e0e6f0; 
-            border-radius: 1.5rem;
-            background-color: #ffffff;
-            padding: 2rem;
+            background-color: #ffffff; /* Card remains white for contrast */
+            border-radius: 2rem;
+            padding: 3rem 1.5rem;
+            text-align: center;
+          }
+
+        /* Update Icon styling */
+        .status-container .icon-wrapper {
+            background-color: var(--bs-primary-light-bg); 
+            border-color: var(--bs-primary-color);
+        }
+        .status-container .status-icon {
+            color: var(--bs-primary-color);
         }
 
-        .icon-large {
-            font-size: 4rem;
-            color: var(--bs-primary-light);
-            margin-bottom: 1.5rem;
-            /* Simple pulse animation for attention */
-            animation: pulse 2s infinite;
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            border: 2px solid;
+            animation: fadeInScale 0.7s ease-out;
         }
 
-        .btn-update {
-            background-color: var(--bs-primary-light);
-            border-color: var(--bs-primary-light);
-            font-weight: 600;
-            padding: 0.75rem 2rem;
+        .status-icon {
+            font-size: 3.5rem;
+            line-height: 1;
+        }
+
+        .status-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--bs-text-primary);
+        }
+
+        .status-description {
+            font-size: 0.95rem;
+            color: var(--bs-text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        /* Update Button Styling */
+        .btn-action {
+            display: block; /* Make button full width of container */
+            width: 100%;
+            color: #fff;
+            background-color: var(--bs-primary-color);
+            border-color: var(--bs-primary-color);
+            padding: 0.8rem 1.5rem;
             border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
             transition: all 0.3s ease;
+            text-decoration: none;
+            margin-bottom: 1rem; /* Space before next button */
         }
-
-        .btn-update:hover {
+        .btn-action:hover {
             background-color: var(--bs-primary-dark);
             border-color: var(--bs-primary-dark);
-            transform: translateY(-2px);
-            /* Soft focus shadow on hover to replace the general box-shadow */
-            box-shadow: 0 5px 15px rgba(30, 135, 240, 0.3);
         }
 
-        .text-error {
-            color: var(--bs-text-color);
-        }
-        
-        .title-text {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+        /* Telegram Button Styling */
+        .btn-telegram {
+            display: block;
+            width: 100%;
+            background-color: #0088cc; /* Official Telegram Blue */
+            border-color: #0088cc;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); color: var(--bs-primary-dark); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
+        .btn-telegram:hover {
+            background-color: #006699;
+            border-color: #006699;
         }
         
-        /* Ensure responsive font sizing */
-        @media (max-width: 576px) {
-            .title-text {
-                font-size: 1.5rem;
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 480px) {
+            .status-container {
+                padding: 2rem 1rem;
+            }
+            .status-title {
+                font-size: 1.4rem;
             }
         }
-
     </style>
 </head>
 <body>
-    <!-- Semantic HTML: main for the primary content -->
-    <main class="update-container text-center">
-        <!-- Semantic HTML: section for grouping content -->
-        <section>
-            <!-- Large icon using Bootstrap Icons -->
-            <i class="bi bi-arrow-clockwise icon-large"></i>
-            
-            <h1 class="title-text text-error">
-                App Update Required
-            </h1>
-            
-            <p class="lead mb-4 text-muted">
-                Your app is outdated, please update your app to continue.
-            </p>
-            
-            <!-- Primary action button -->
-            <a href="#" class="btn btn-update text-white">
-                <i class="bi bi-box-arrow-up-right me-2"></i> Update Now
-            </a>
-            
-        </section>
-        
-        <!-- Optional Footer/Disclaimer -->
-        <footer class="mt-4 pt-3 border-top text-muted small">
-            <p class="mb-0">Need assistance? Contact support.</p>
-        </footer>
 
+    <!-- Update Required State -->
+    <main id="updateCard" class="status-container">
+        <div class="icon-wrapper">
+            <!-- Using bi-arrow-clockwise icon for update/refresh theme -->
+            <i class="bi bi-arrow-clockwise status-icon"></i>
+        </div>
+        <h1 class="status-title">APP UPDATE REQUIRED</h1>
+        <p class="status-description">
+            Your current app version is outdated. Please update to the latest version to continue using all features and access new improvements.
+        </p>
+        
+        <!-- Primary Action Button -->
+        <a href="#" class="btn-action">
+            <i class="bi bi-cloud-arrow-up-fill me-2"></i> Update Now
+        </a>
+
+        <!-- Secondary Action Button: Join Telegram -->
+        <a href="https://t.me/yourchannel" target="_blank" class="btn-telegram">
+            <i class="bi bi-telegram me-2"></i> Join Our Telegram
+        </a>
     </main>
 
-    <!-- Bootstrap JS (optional, but included for completeness) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
