@@ -1,1 +1,130 @@
-hii
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  <title>Update Required</title>
+  
+    <!-- Bootstrap CSS (via CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Icons CSS (via CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        /* CSS Root for attractive light colors */
+        :root {
+            --bs-app-bg: #f5f9ff; /* Very light, soft blue background */
+            --bs-primary-light: #52a3f5; /* Light primary color for focus/buttons */
+            --bs-primary-dark: #1e87f0; /* Darker primary for button text/hover */
+            --bs-text-color: #343a40;
+            --max-width: 660px;
+        }
+
+        body {
+            background-color: var(--bs-app-bg);
+            color: var(--bs-text-color);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem; /* Padding for mobile safety */
+            font-family: 'Inter', sans-serif;
+        }
+
+        .update-container {
+            max-width: var(--max-width);
+            width: 100%;
+            /* Box-shadow removed as requested. Using a light border instead for definition. */
+            border: 1px solid #e0e6f0; 
+            border-radius: 1.5rem;
+            background-color: #ffffff;
+            padding: 2rem;
+        }
+
+        .icon-large {
+            font-size: 4rem;
+            color: var(--bs-primary-light);
+            margin-bottom: 1.5rem;
+            /* Simple pulse animation for attention */
+            animation: pulse 2s infinite;
+        }
+
+        .btn-update {
+            background-color: var(--bs-primary-light);
+            border-color: var(--bs-primary-light);
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-update:hover {
+            background-color: var(--bs-primary-dark);
+            border-color: var(--bs-primary-dark);
+            transform: translateY(-2px);
+            /* Soft focus shadow on hover to replace the general box-shadow */
+            box-shadow: 0 5px 15px rgba(30, 135, 240, 0.3);
+        }
+
+        .text-error {
+            color: var(--bs-text-color);
+        }
+        
+        .title-text {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); color: var(--bs-primary-dark); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Ensure responsive font sizing */
+        @media (max-width: 576px) {
+            .title-text {
+                font-size: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Semantic HTML: main for the primary content -->
+    <main class="update-container text-center">
+        <!-- Semantic HTML: section for grouping content -->
+        <section>
+            <!-- Large icon using Bootstrap Icons -->
+            <i class="bi bi-arrow-clockwise icon-large"></i>
+            
+            <h1 class="title-text text-error">
+                App Update Required
+            </h1>
+            
+            <p class="lead mb-4 text-muted">
+                Your app is outdated, please update your app to continue.
+            </p>
+            
+            <!-- Primary action button -->
+            <a href="#" class="btn btn-update text-white">
+                <i class="bi bi-box-arrow-up-right me-2"></i> Update Now
+            </a>
+            
+        </section>
+        
+        <!-- Optional Footer/Disclaimer -->
+        <footer class="mt-4 pt-3 border-top text-muted small">
+            <p class="mb-0">Need assistance? Contact support.</p>
+        </footer>
+
+    </main>
+
+    <!-- Bootstrap JS (optional, but included for completeness) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
