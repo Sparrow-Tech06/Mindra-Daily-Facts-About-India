@@ -25,7 +25,9 @@
 
             --bs-text-primary: #333;
             --bs-text-secondary: #666;
-            --max-width: 380px;
+            --max-width: 95%;
+
+            --telegram : #0088cc ;
         }        
   @media (prefers-color-scheme: dark) {
         :root {
@@ -38,6 +40,8 @@
 
             --bs-text-primary: #333;
             --bs-text-secondary: #666;
+
+            --telegram : #6a5acd ;
         }
   }
         body {
@@ -134,8 +138,8 @@
         .btn-telegram {
             display: block;
             width: 100%;
-            background-color: #0088cc; /* Official Telegram Blue */
-            border-color: #0088cc;
+            background-color: var(--telegram); /* Official Telegram Blue */
+            border-color: var(--telegram) ;
             color: #fff;
             padding: 0.8rem 1.5rem;
             border-radius: 0.75rem;
